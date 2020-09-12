@@ -1,14 +1,14 @@
 const http = require('http');
 
 var dataPoster = JSON.stringify({
-    name: 'John Doe',
-    job: 'Content Writer'
+    italics: true,
+    filler: 'Have you any wool ?'
 });
 
 const options = {
     hostname: '127.0.0.1',
     port:8080,
-    path: '/user',
+    path: '/complete',
     method: 'POST',
     headers: {
         'Content-Type': 'application/json',
@@ -23,6 +23,7 @@ const req = http.request(options, (res) => {
     console.log('Status Code:', res.statusCode);
 
     res.on('data', (chunk) => {
+        //console.log(`Chunk: ${chunk}`)
         data += chunk;
     });
 

@@ -14,7 +14,7 @@ var req = http.request(options, function (res) {
   res.setEncoding("utf8");
 
   res.on("data", function (chunk) {
-    console.log("Response: " + chunk);
+    console.log("Response: " + (chunk));
   });
 
 
@@ -22,6 +22,8 @@ var req = http.request(options, function (res) {
     console.log("Response ENDED");
   });
 });
+
+
 req.on("error", function (e) {
   console.log("problem with request: " + e.message);
 });

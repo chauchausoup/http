@@ -5,8 +5,8 @@ var http= require('http')
 const portNo=8080;
 
 var data={
-    name:"mama",
-    lastname:"black sheep"
+    name:"MaMa",
+    lastname:"Black Sheep"
 };
 
 
@@ -26,10 +26,11 @@ var getRoutes = {
 }
 
 var postRoutes ={
-    '/user':(request,response)=>{
+    '/complete':(request,response)=>{
         let body = '';
         request.on('data', chunk => {
-            body += chunk; // convert Buffer to string
+            console.log(chunk);
+            body += chunk; //what the chunk?
         });
         request.on('end', () => {
             data["post1"]=body;
@@ -37,7 +38,7 @@ var postRoutes ={
             
         });
         response.writeHead(200);
-        response.end("Posted your data!")
+        response.end("Thank you for making a Rhyme!")
            
     }
 }
@@ -53,7 +54,7 @@ http.createServer((request,response)=>{
 
     }
     if(request.url in postRoutes){
-        console.log("triggered");
+       // console.log("");
         return postRoutes[request.url](request,response)
     }
 
