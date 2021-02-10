@@ -6,7 +6,6 @@ server.js is a basic HTTP server to check the POST from poster.js
 
 
 
-<<<<<<< HEAD
 basicRouting2.js is complete CRUD app for HTTP.
 client.js is a basic HTTP GET client.
 
@@ -15,7 +14,7 @@ client.js is a basic HTTP GET client.
 You can change routes in client.js as per the routes in basicRouting2.js and you can see the result in client.
 In case of poster.js on changing respective url parameters you can invoke the server respectively.
 
-=======
+
 basicRouting2.js is complete CRUD app for HTTP.\
 client.js is a basic HTTP GET client.
->>>>>>> 91fc988ede3e78d386a4263e8340feaa8bb5b12d
+
