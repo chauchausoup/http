@@ -17,7 +17,7 @@ var data = [{
 
 
 
-var getRoutes = {
+var GET_ROUTES = {
     '/': function(request, response) { //Reading
         if (request.params.name == null) {
             response.writeHead(200, { 'content-type': 'application/json' });
@@ -39,7 +39,7 @@ var getRoutes = {
 }
 
 
-var postRoutes = {
+var POST_ROUTES = {
     '/complete': (request, response) => {
         console.log(request);
         let body = '';
@@ -76,7 +76,7 @@ var postRoutes = {
     }
 }
 
-var putRoutes = {
+var PUT_ROUTES = {
     '/': (request, response) => { //Updating
         let body = '';
         request.on('data', chunk => {
@@ -101,7 +101,7 @@ var putRoutes = {
     }
 }
 
-var deleteRoutes = {
+var DELETE_ROUTES = {
     '/': function(request, response) { //Deleting
         if (request.params.name == null) {
             response.writeHead(404);
@@ -116,8 +116,10 @@ var deleteRoutes = {
     }
 }
 
+
+//MAIN SERVER
 http.createServer((request, response) => {
-    //console.log(request)
+    
 
     if (request.method == 'GET' || request.method == 'DELETE') {
         //request url http://localhost:8080/ or http://localhost:8080/?name=MaMa
@@ -135,22 +137,22 @@ http.createServer((request, response) => {
             parsedUrl = request.url;
         request.params = params;
         if (request.method == 'GET') {
-            if (parsedUrl in getRoutes) {
-                return getRoutes[parsedUrl](request, response);
+            if (parsedUrl in GET_ROUTES) {
+                return GET_ROUTES[parsedUrl](request, response);
             }
         } else if (request.method == 'DELETE') {
             //https://stackoverflow.com/questions/299628/is-an-entity-body-allowed-for-an-http-delete-request
-            if (parsedUrl in getRoutes) {
-                return deleteRoutes[parsedUrl](request, response);
+            if (parsedUrl in GET_ROUTES) {
+                return DELETE_ROUTES[parsedUrl](request, response);
             }
         }
     } else if (request.method == 'POST') {
-        if (request.url in postRoutes) {
-            return postRoutes[request.url](request, response)
+        if (request.url in POST_ROUTES) {
+            return POST_ROUTES[request.url](request, response)
         }
     } else if (request.method == 'PUT') { //also patch can be used
-        if (request.url in putRoutes) {
-            return putRoutes[request.url](request, response)
+        if (request.url in PUT_ROUTES) {
+            return PUT_ROUTES[request.url](request, response)
         }
     }
 

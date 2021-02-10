@@ -3,7 +3,7 @@ var http = require("http");
 var options = {
     hostname: "127.0.0.1",
     port: 8080,
-    path: "/",
+    path: "/help",
     method: "GET",
 };
 
